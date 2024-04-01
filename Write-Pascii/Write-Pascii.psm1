@@ -37,12 +37,12 @@ function Write-Pascii {
     }
 
     Foreach ($Line in Get-Content $File) {
-        $Split = $Line -split "(β..)"
+        $Split = $Line -split "(Ω..)"
         $Count = $Split.Count
         $Print = 0
         Foreach ($Token in $Split) {
             $Print ++
-            if ($Token -like 'β*') {
+            if ($Token -like 'Ω*') {
                 if (!($Override -eq $true)) {
                     $Record = (0..($ColorCodes.Count-1)) | Where-Object {$ColorCodes[$_].code -eq $Token.Remove(0,2)}
                     $FgColor = $ColorCodes[$Record].color
